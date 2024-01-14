@@ -4,9 +4,11 @@ const express = require("express");
 const path = require("path");
 // Create Express App
 const app = express();
+const cors = require("cors");
 
 const axios = require("axios");
 
+app.use(cors());
 app.use(express.json()); // JSON-encoded Middleware
 app.use(express.urlencoded({ extended: true })); // URL-encoded Middleware untuk parsing body
 
@@ -26,7 +28,7 @@ app.post("/", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.json({ message: "Hello World!" });
 });
 
 app.listen(3000, () => {
